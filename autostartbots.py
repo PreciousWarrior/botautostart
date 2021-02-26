@@ -1,6 +1,4 @@
 import os
-import sys
-
 
 #Your main bots folder
 bots_folder = ""
