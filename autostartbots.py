@@ -12,8 +12,8 @@ bots_folder = ""
 shell_cmd = '''gnome-terminal --tab --working-directory="(dir)" -e "(cmd)" '''
 
 #you might want to change these commands, especially on OSX or linux,
-#because python is preinstalled. swap between python and python3 to see what works.
-python_start_cmd = "python3"
+#because python2 is preinstalled. swap between python and python3 to see what works.
+python_start_cmd = "python"
 node_start_cmd = "node"
 
 def get_cmd(path):
