@@ -26,7 +26,7 @@ def get_cmd(path):
 
 
 def get_active_file(path):
-    keywords = ["main.js", "index.js", "main.py"]
+    keywords = ["main.js", "index.js", "main.py", "bot.js", "bot.py", "index.py"]
     files = os.listdir(path)
     for keyword in keywords:
         if keyword in files:
@@ -36,16 +36,17 @@ def get_active_file(path):
     results += [each for each in files if each.endswith('.py') or each.endswith('.js')]
     if len(results) == 1:
         print(f"Found one matching js/py file with unrecognized filename in {path}. Using {results[0]} file.")
-        return results[0]
+        return os.path.join(path, results[0])
     if len(results) > 1:
         print(f"Found multiple matching js/py files with unrecognized filenames in {path}. Using the first - {results[0]}.") 
-        return results[0]
+        return os.path.join(path, results[0])
     print(f"Found no matches in {path}! Aborting the mission. Please remove this or comment this from the text file with '#'.")
     return None
 
 def main():
     final_command = ""
     fpaths = open("paths.txt", "r").read().splitlines()
+    
     for path in fpaths:
         if not path.startswith("#"):
             active_file = get_active_file(os.path.join(bots_folder, path))
